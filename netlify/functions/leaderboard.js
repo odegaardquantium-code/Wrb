@@ -31,7 +31,7 @@ function extractFromS(html, channel, msgid){
   const re = new RegExp(`data-post="${channel}\\/${msgid}"[\\s\\S]*?<div class="tgme_widget_message_text[^"]*">([\\s\\S]*?)<\\/div>`, "i");
   const m = html.match(re);
   if (m) return stripTags(m[1]);
-  const m2=html.match(/<div class="tgme_widget_message_text[^"]*">([\s\S]*?)<\/div>/i);
+  const m2=html.match(/<div class="tgme_widget_message_text[^"]*">([\\s\\S]*?)<\\/div>/i);
   return m2 ? stripTags(m2[1]) : "";
 }
 async function fetchText(channel, msgid){
