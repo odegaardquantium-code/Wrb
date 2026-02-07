@@ -22,9 +22,9 @@
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="#top" aria-label="SpyTON home">
-        <span class="brand__mark" aria-hidden="true">S</span>
+        <img class="brand__logo" src="spyton-character.png" alt="SpyTON logo" />
         <span class="brand__name">SpyTON</span>
-        <span class="pill">Ton Trending</span>
+        <span class="pill pill--ultimate">ULTIMATE</span>
       </a>
 
       <nav class="nav">
@@ -96,6 +96,17 @@
               <div class="trust__num">TON</div>
               <div class="trust__label">Made for TON ecosystem</div>
             </div>
+          </div>
+
+          <div class="heroBanner">
+            <div class="heroBanner__img">
+              <img src="spyton-character.png" alt="SpyTON banner" loading="lazy" />
+            </div>
+            <div class="heroBanner__pill">
+              <span class="dot"></span>
+              Trending • Listings • Bot
+            </div>
+            <a class="btn btn--primary btn--lg heroBanner__cta" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book with /start</a>
           </div>
 
           <div class="mini">
@@ -365,22 +376,39 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__left">
-        <div class="brand brand--sm">
-          <span class="brand__mark">S</span>
-          <span class="brand__name">SpyTON</span>
-        </div>
-        <div class="muted small">© <span id="year"></span> SpyTON. All rights reserved.</div>
-      </div>
-      <div class="footer__links">
-        <a href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Trending</a>
-        <a href="https://t.me/TonProjectListing" target="_blank" rel="noreferrer">Listing</a>
-        <a href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Bot</a>
+  
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img class="footer__logo" src="spyton-character.png" alt="SpyTON logo" />
+      <div>
+        <div class="footer__name">SpyTON</div>
+        <div class="footer__tag">Built for TON.</div>
       </div>
     </div>
-  </footer>
+
+    <div class="footer__col">
+      <div class="footer__title">Links</div>
+      <a href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Trending</a>
+      <a href="https://t.me/TonProjectListing" target="_blank" rel="noreferrer">Listing</a>
+      <a href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Booking Bot</a>
+      <a href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Support Chat</a>
+    </div>
+
+    <div class="footer__col">
+      <div class="footer__title">Docs</div>
+      <a href="#features">SpyTON Docs</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#how">How to book</a>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <span>© <span id="year"></span> SpyTON</span>
+    <span class="muted">Trending • Listings • Bot</span>
+  </div>
+</footer>
+
 
   <script src="script.js"></script>
 </body>

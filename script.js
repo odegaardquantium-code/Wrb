@@ -1,5 +1,7 @@
 
 (function () {
+  function isHttp(u){ return /^https?:\/\//i.test(String(u||"").trim()); }
+
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
   // Mobile menu (hamburger)
@@ -113,8 +115,8 @@
     rows.slice(0,10).forEach((r, idx) => {
       const sym = String(r.name||'').replace('$','').toUpperCase();
       const t = map[sym] || {};
-      const chart = t.chart_url || '#';
-      const buy = t.buy_url || '#';
+      const chart = (isHttp(t.chart_url) ? t.chart_url : null);
+      const buy = (isHttp(t.buy_url) ? t.buy_url : null);
       const chg = String(r.change||'').trim();
       const cls = chg.startsWith('+') ? 'pos' : (chg.startsWith('-') ? 'neg' : '');
       const card = document.createElement('div');
@@ -131,8 +133,8 @@
           <div class="lbChange ${cls}">${chg}</div>
         </div>
         <div class="lbCard__actions">
-          <a class="lbMiniBtn lbMiniBtn--primary" href="${buy}" target="_blank" rel="noreferrer">Buy on dTrade</a>
-          <a class="lbMiniBtn" href="${chart}" target="_blank" rel="noreferrer">Chart</a>
+          ${buy ? `<a class="lbMiniBtn lbMiniBtn--primary" href="${buy}" target="_blank" rel="noreferrer">Buy on dTrade</a>` : `<span class="lbMiniBtn lbMiniBtn--disabled">Buy on dTrade</span>`}
+          ${chart ? `<a class="lbMiniBtn" href="${chart}" target="_blank" rel="noreferrer">Chart</a>` : `<span class="lbMiniBtn lbMiniBtn--disabled">Chart</span>`}
         </div>
       `;
       box.appendChild(card);
@@ -155,8 +157,8 @@
     buys.forEach((b) => {
       const sym = String(b.token||'').replace('$','').toUpperCase();
       const t = map[sym] || {};
-      const chart = t.chart_url || '#';
-      const buy = t.buy_url || '#';
+      const chart = (isHttp(t.chart_url) ? t.chart_url : null);
+      const buy = (isHttp(t.buy_url) ? t.buy_url : null);
       const item = document.createElement('div');
       item.className = 'buyItem';
       item.innerHTML = `
@@ -173,8 +175,8 @@
           ${b.wallet ? `<span>👤 ${b.wallet}</span>` : ``}
         </div>
         <div class="buyActions">
-          <a class="lbMiniBtn lbMiniBtn--primary" href="${buy}" target="_blank" rel="noreferrer">Buy on dTrade</a>
-          <a class="lbMiniBtn" href="${chart}" target="_blank" rel="noreferrer">Chart</a>
+          ${buy ? `<a class="lbMiniBtn lbMiniBtn--primary" href="${buy}" target="_blank" rel="noreferrer">Buy on dTrade</a>` : `<span class="lbMiniBtn lbMiniBtn--disabled">Buy on dTrade</span>`}
+          ${chart ? `<a class="lbMiniBtn" href="${chart}" target="_blank" rel="noreferrer">Chart</a>` : `<span class="lbMiniBtn lbMiniBtn--disabled">Chart</span>`}
         </div>
       `;
       box.appendChild(item);
@@ -231,17 +233,18 @@
     const cfg = await loadConfig();
     if (!cfg) return;
 
-    // fallback immediately
-    if (Array.isArray(cfg.leaderboard)){
-      const fb = cfg.leaderboard.map(x => ({ name:x.name, change:x.change || x.time_left || '' }));
-      renderLiveRows(fb);
-      renderLeaderboardCards(fb, cfg);
-    }
+    // show loading placeholders
+    renderLiveRows([{name:'$UTYA', change:'…'},{name:'$FRT', change:'…'},{name:'$REDO', change:'…'}]);
+    renderLeaderboardCards([{name:'$UTYA', change:'…'},{name:'$FRT', change:'…'},{name:'$REDO', change:'…'}], cfg);
 
     const lb = await fetchLeaderboard(cfg);
     if (lb && lb.length){
       renderLiveRows(lb);
       renderLeaderboardCards(lb, cfg);
+    } else if (Array.isArray(cfg.leaderboard)){
+      const fb = cfg.leaderboard.map(x => ({ name:x.name, change:(x.change || x.time_left || '—') }));
+      renderLiveRows(fb);
+      renderLeaderboardCards(fb, cfg);
     }
 
     const buys = await fetchBuys(cfg);

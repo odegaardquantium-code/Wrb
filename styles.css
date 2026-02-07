@@ -771,3 +771,89 @@ h1{
 .tag.tabBtn{padding:8px 12px;border-radius:999px;background:rgba(0,245,160,.14);border:1px solid rgba(0,245,160,.22);color:rgba(255,255,255,.92);font-weight:800}
 .chip.tabBtn{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);font-weight:800}
 .tabBtn--active{color:rgba(255,255,255,.98) !important;filter:brightness(1.08)}
+
+
+/* Header logo + ultimate pill */
+.brand__logo{width:38px;height:38px;border-radius:12px;object-fit:cover;box-shadow:0 10px 28px rgba(0,0,0,.35);}
+.pill--ultimate{
+  background: rgba(0,245,160,.12);
+  border: 1px solid rgba(0,245,160,.22);
+  color: rgba(255,255,255,.92);
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+}
+
+/* Hero banner block */
+.heroBanner{
+  margin-top: 18px;
+  border-radius: 26px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  overflow: hidden;
+  padding: 14px;
+  position: relative;
+}
+.heroBanner__img{
+  border-radius: 22px;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+.heroBanner__img img{
+  width:100%;
+  height: auto;
+  display:block;
+}
+.heroBanner__pill{
+  margin-top: 12px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.20);
+  color: rgba(255,255,255,.78);
+  font-weight: 800;
+}
+.heroBanner__cta{
+  margin-top: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Footer layout like your other site */
+.footer{padding: 40px 0 26px;}
+.footer__grid{
+  display:grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 26px;
+  padding: 26px;
+  border-radius: 26px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.22);
+}
+.footer__brand{display:flex;align-items:center;gap:14px;}
+.footer__logo{width:56px;height:56px;border-radius:18px;object-fit:cover;border:1px solid rgba(255,255,255,.10);}
+.footer__name{font-weight:900;font-size:24px;line-height:1;}
+.footer__tag{color: rgba(255,255,255,.68);font-weight:800;margin-top:6px;}
+.footer__col{display:flex;flex-direction:column;gap:10px;}
+.footer__title{font-weight:900;font-size:22px;margin-bottom:2px;}
+.footer__col a{color: rgba(255,255,255,.72);text-decoration:none;font-weight:700;}
+.footer__col a:hover{color: rgba(255,255,255,.92);}
+.footer__bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 12px;
+  padding: 14px 8px 0;
+  color: rgba(255,255,255,.70);
+  font-weight: 700;
+}
+@media (max-width: 860px){
+  .footer__grid{grid-template-columns:1fr; padding: 20px;}
+}
+
+.lbMiniBtn--disabled{opacity:.45;cursor:not-allowed;}
