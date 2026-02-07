@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#00F5A0" />
+  <title>SpyTON — Ton Trending</title>
+  <meta name="description" content="SpyTON Ton Trending — premium TON ecosystem trending + buy alerts + listing hub. Book trending, track buys, and go viral on Telegram." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="grid"></div>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="SpyTON home">
+        <span class="brand__mark" aria-hidden="true">S</span>
+        <span class="brand__name">SpyTON</span>
+        <span class="pill">Ton Trending</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header__cta">
+        <a class="btn btn--ghost" href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Open Channel</a>
+        <a class="btn btn--primary" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Trending</a>
+        <button class="menu" id="menuBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobileNav" id="mobileNav" aria-hidden="true">
+      <div class="mobileNav__panel">
+        <a href="#features" class="mobileNav__link">Features</a>
+        <a href="#how" class="mobileNav__link">How it works</a>
+        <a href="#pricing" class="mobileNav__link">Pricing</a>
+        <a href="#faq" class="mobileNav__link">FAQ</a>
+        <div class="mobileNav__buttons">
+          <a class="btn btn--ghost" href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Open Channel</a>
+          <a class="btn btn--primary" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Trending</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <div class="kicker">
+            <span class="dot"></span>
+            Built for TON projects • Trending • Alerts • Listings
+          </div>
+          <h1>
+            Make your <span class="grad">TON token</span> trend like a top project.
+          </h1>
+          <p class="lead">
+            SpyTON helps TON tokens get visibility with <b>booked trending</b>, <b>buy alerts</b>, and a clean
+            listing hub—powered by Telegram.
+          </p>
+
+          <div class="hero__buttons">
+            <a class="btn btn--primary btn--lg" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">
+              Book Trending
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="https://t.me/TonProjectListing" target="_blank" rel="noreferrer">
+              Project Listing
+            </a>
+          </div>
+
+          <div class="trust">
+            <div class="trust__item">
+              <div class="trust__num">24/7</div>
+              <div class="trust__label">Telegram presence</div>
+            </div>
+            <div class="trust__item">
+              <div class="trust__num">Fast</div>
+              <div class="trust__label">Buy alerts delivery</div>
+            </div>
+            <div class="trust__item">
+              <div class="trust__num">TON</div>
+              <div class="trust__label">Made for TON ecosystem</div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="mini__card">
+              <div class="mini__title">Your Links</div>
+              <div class="mini__links">
+                <a href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">SpyTON Trending</a>
+                <a href="https://t.me/TonProjectListing" target="_blank" rel="noreferrer">TON Project Listing</a>
+                <a href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Trend Bot</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual" id="liveAnchor">
+          <div class="card card--glass">
+            <div class="card__top" id="topTabs"><button class="tag tabBtn tabBtn--active" data-tab="live" type="button">LIVE</button><button class="chip tabBtn" data-tab="buy" type="button">Buy Alerts</button><button class="chip tabBtn" data-tab="leaderboard" type="button">Leaderboard</button></div>
+
+            <div class="phone">
+              <div class="phone__status">
+                <span>SpyTON</span>
+                <span class="muted">TON • Trending</span>
+              </div>
+
+              <div class="post">
+                <div class="post__title">🟩 | <span id="tokenName">REDO</span></div>
+                <div class="post__sub"><span id="tokenSub">Buy! — DeDust / STON.fi</span></div>
+                <div class="bars" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="post__row">
+                  <div class="kv"><span class="k">💎</span><span><span id="tonAmount">12.50 TON</span></span></div>
+                  <div class="kv"><span class="k">📦</span><span><span id="tokenAmount">1,250,000 REDO</span></span></div>
+                </div>
+                <div class="post__row">
+                  <div class="kv"><span class="k">👤</span><span><span id="walletShort">UQ…7a9D</span></span></div>
+                  <div class="kv"><span class="k">📊</span><a id="chartLink" class="kvLink" href="#" target="_blank" rel="noreferrer"><span>Chart</span></a></div>
+                </div>
+                <div class="post__actions">
+                  <a class="pillBtn" id="buyLink" href="https://t.me/dtrade?start=11TYq7LInG" target="_blank" rel="noreferrer">Buy on dTrade</a>
+                  <a class="pillBtn pillBtn--ghost" id="tgLink" href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Open Telegram</a>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="lb">
+                <div class="lb__head">
+                  <div class="lb__title">Live Leaderboard</div>
+                  <div class="lb__note muted"><a id="liveLbLink" class="liveLbLink" href="https://t.me/SpyTonTrending/15950" target="_blank" rel="noreferrer">Open live in Telegram</a></div>
+                </div>
+                <div class="lb__rows" id="lbRows"></div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="card__bottom">
+              <div class="avatar">
+                <img src="spyton-character.png" alt="SpyTON character" loading="lazy" />
+              </div>
+              <div>
+                <div class="muted small">SpyTON verified brand identity.</div>
+                <div class="small">Book trending • Track buys • Grow fast</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ticker" aria-hidden="true">
+            <div class="ticker__track">
+              <span>STON.fi</span><span>DeDust</span><span>Telegram</span><span>Trending</span><span>Listings</span><span>Buy Alerts</span>
+              <span>STON.fi</span><span>DeDust</span><span>Telegram</span><span>Trending</span><span>Listings</span><span>Buy Alerts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<section id="tab-buy" class="tab">
+  <div class="card">
+    <div class="card__head">
+      <div>
+        <div class="card__title">Recent Buy Alerts</div>
+        <div class="muted">Live from @SpyTonTrending</div>
+      </div>
+      <a class="liveLbLink" id="buyOpenTg" href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Open channel</a>
+    </div>
+    <div id="buyList" class="buyList"></div>
+  </div>
+</section>
+
+<section id="tab-leaderboard" class="tab">
+  <div class="card">
+    <div class="card__head">
+      <div>
+        <div class="card__title">Leaderboard</div>
+        <div class="muted">Auto-updates from channel</div>
+      </div>
+      <a class="liveLbLink" id="lbOpenTg" href="https://t.me/SpyTonTrending/15950" target="_blank" rel="noreferrer">Open live in Telegram</a>
+    </div>
+    <div id="lbCards" class="lbCards"></div>
+  </div>
+</section>
+
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section__head">
+          <h2>Everything you need to push a token</h2>
+          <p class="muted">A simple, high-converting layout: strong hero, clear benefits, proof, and CTA.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="feat">
+            <div class="icon">🔥</div>
+            <h3>Book Trending</h3>
+            <p>Projects book time slots and get featured where buyers are watching.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">⚡</div>
+            <h3>Fast Buy Alerts</h3>
+            <p>Clean buy posts with chart + TX actions so traders can move instantly.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">🏆</div>
+            <h3>Leaderboard</h3>
+            <p>Auto-updating board for booked tokens—no spam, always one live message.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">📣</div>
+            <h3>Telegram-first</h3>
+            <p>Your whole funnel stays where your community already is: Telegram.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">🧾</div>
+            <h3>Project Listings</h3>
+            <p>Showcase new launches and listings with clean project cards and links.</p>
+          </div>
+          <div class="feat">
+            <div class="icon">🧩</div>
+            <h3>Easy to Customize</h3>
+            <p>Edit text, links, and colors in 2 minutes. Add screenshots anytime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section__head">
+          <h2>How it works</h2>
+          <p class="muted">Simple flow from booking → trending → buyers.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">1</div>
+            <div>
+              <h3>Open the bot</h3>
+              <p>Tap the bot and choose a trending slot or plan.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">2</div>
+            <div>
+              <h3>Add your token details</h3>
+              <p>Token name, contract address, and Telegram link (if you have it).</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">3</div>
+            <div>
+              <h3>Go live</h3>
+              <p>Your token appears on the leaderboard and in the trending funnel.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctaBox">
+          <div>
+            <h3>Ready to trend?</h3>
+            <p class="muted">Book a slot and get your project in front of TON traders.</p>
+          </div>
+          <div class="ctaBox__btns">
+            <a class="btn btn--primary" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Trending</a>
+            <a class="btn btn--ghost" href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">View Channel</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section__head">
+          <h2>Pricing</h2>
+          <p class="muted">Swap these values to match your current offers.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="priceCard">
+            <div class="priceCard__top">
+              <h3>Starter</h3>
+              <div class="price"><span class="amt">7</span><span class="unit">TON</span></div>
+              <div class="muted">For new launches</div>
+            </div>
+            <ul class="list">
+              <li>Trending slot</li>
+              <li>Leaderboard placement</li>
+              <li>Telegram link button</li>
+            </ul>
+            <a class="btn btn--primary w100" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Start</a>
+          </div>
+
+          <div class="priceCard priceCard--featured">
+            <div class="priceCard__badge">Most booked</div>
+            <div class="priceCard__top">
+              <h3>Pro</h3>
+              <div class="price"><span class="amt">15</span><span class="unit">TON</span></div>
+              <div class="muted">More time + priority</div>
+            </div>
+            <ul class="list">
+              <li>Longer trending time</li>
+              <li>Higher leaderboard position</li>
+              <li>Extra promo mention</li>
+            </ul>
+            <a class="btn btn--primary w100" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Pro</a>
+          </div>
+
+          <div class="priceCard">
+            <div class="priceCard__top">
+              <h3>Premium</h3>
+              <div class="price"><span class="amt">30</span><span class="unit">TON</span></div>
+              <div class="muted">For serious pushes</div>
+            </div>
+            <ul class="list">
+              <li>Top placement</li>
+              <li>Best visibility window</li>
+              <li>Dedicated spotlight</li>
+            </ul>
+            <a class="btn btn--primary w100" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Premium</a>
+          </div>
+        </div>
+
+        <div class="note">
+          Tip: replace the numbers and plan names in <span class="mono">index.html</span>.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <h2>FAQ</h2>
+          <p class="muted">Quick answers for projects booking trending.</p>
+        </div>
+
+        <div class="faq">
+          </div>
+
+        <div class="footerCta">
+          <h3>Launch. Trend. Grow.</h3>
+          <p class="muted">SpyTON puts your token in front of TON traders in minutes.</p>
+          <div class="footerCta__btns">
+            <a class="btn btn--primary" href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Trending</a>
+            <a class="btn btn--ghost" href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Join Channel</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <div class="brand brand--sm">
+          <span class="brand__mark">S</span>
+          <span class="brand__name">SpyTON</span>
+        </div>
+        <div class="muted small">© <span id="year"></span> SpyTON. All rights reserved.</div>
+      </div>
+      <div class="footer__links">
+        <a href="https://t.me/SpyTonTrending" target="_blank" rel="noreferrer">Trending</a>
+        <a href="https://t.me/TonProjectListing" target="_blank" rel="noreferrer">Listing</a>
+        <a href="https://t.me/SpyTONTrndBot" target="_blank" rel="noreferrer">Book Bot</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

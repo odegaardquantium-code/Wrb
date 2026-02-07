@@ -1,0 +1,54 @@
+{
+  "featured_token": {
+    "name": "REDO",
+    "ton_amount": "12.50 TON",
+    "token_amount": "1,250,000 REDO",
+    "wallet_short": "UQ\u20267a9D",
+    "subtitle": "Buy! \u2014 DeDust / STON.fi",
+    "contract_address": "PASTE_REDO_CA_HERE",
+    "geckoterminal_chart_url": "PASTE_GECKOTERMINAL_URL_HERE",
+    "telegram_channel_url": "https://t.me/SpyTonTrending",
+    "dtrade_referral_base": "https://t.me/dtrade?start=11TYq7LInG",
+    "dtrade_buy_url": "https://t.me/dtrade?start=11TYq7LInG_EQBZ_cafPyDr5KUTs0aNxh0ZTDhkpEZONmLJA2SNGlLm4Cko"
+  },
+  "leaderboard": [
+    {
+      "name": "$UTYA",
+      "time_left": "+0%"
+    },
+    {
+      "name": "$FRT",
+      "time_left": "+0%"
+    },
+    {
+      "name": "$REDO",
+      "time_left": "+0%"
+    }
+  ],
+  "live_leaderboard": {
+    "channel": "SpyTonTrending",
+    "message_id": 15950,
+    "max_rows": 10,
+    "telegram_message_url": "https://t.me/SpyTonTrending/15950",
+    "refresh_seconds": 30
+  },
+  "token_map": {
+    "UTYA": {
+      "chart_url": "https://www.geckoterminal.com/ton/tokens/EQBaCgUwOoc6gHCNln_oJzb0mVs79YG7wYoavh-o1ItaneLA",
+      "buy_url": "https://t.me/dtrade?start=11TYq7LInG_EQBaCgUwOoc6gHCNln_oJzb0mVs79YG7wYoavh-o1ItaneLA"
+    },
+    "FRT": {
+      "chart_url": "https://www.geckoterminal.com/ton/pools/EQC-NefK7qY1ciFR2gfguwexDvrvE2IqB7J7jafZTJnPQgik",
+      "buy_url": "https://t.me/dtrade?start=11TYq7LInG_EQA1EIDrR33zgL21rwDIfGo7h4ETWieentUvg7jIT-3aP5GG"
+    },
+    "REDO": {
+      "chart_url": "PASTE_GECKOTERMINAL_URL_HERE",
+      "buy_url": "https://t.me/dtrade?start=11TYq7LInG_EQBZ_cafPyDr5KUTs0aNxh0ZTDhkpEZONmLJA2SNGlLm4Cko"
+    }
+  },
+  "buy_alerts": {
+    "channel": "SpyTonTrending",
+    "max": 6,
+    "refresh_seconds": 20
+  }
+}
