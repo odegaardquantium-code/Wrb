@@ -1,48 +1,25 @@
-// netlify/functions/live.js
-
-exports.handler = async () => {
+export async function handler() {
   try {
-    // live.json is in your site repo: /data/live.json
-    // Netlify publishes it, so we can fetch it via the same domain.
-    // But inside a function we can read it via relative URL using absolute path trick:
-    // easiest: fetch from the deployed site path
-    const res = await fetch("https://spyton.netlify.app/data/live.json?t=" + Date.now(), {
-      headers: { "cache-control": "no-store" },
-    });
-
-    // If fetch fails (first deploy), return empty structure
-    if (!res.ok) {
-      return {
-        statusCode: 200,
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control": "no-store",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({ updated_at: "", leaderboard: [], buys: [] }),
-      };
-    }
-
-    const data = await res.json();
+    // live.json is stored in your repo at /data/live.json
+    const resp = await fetch(new URL("../../data/live.json", import.meta.url));
+    const text = await resp.text();
 
     return {
       statusCode: 200,
       headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store",
-        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-store"
       },
-      body: JSON.stringify(data),
+      body: text
     };
   } catch (e) {
     return {
       statusCode: 200,
       headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store",
-        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-store"
       },
-      body: JSON.stringify({ updated_at: "", leaderboard: [], buys: [] }),
+      body: JSON.stringify({ updated_at: "", leaderboard: [], buys: [], error: String(e) })
     };
   }
-};
+}
