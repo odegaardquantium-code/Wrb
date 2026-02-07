@@ -5,15 +5,15 @@ function decodeHtml(str){
 function stripTags(html){
   return decodeHtml(html.replace(/<br\s*\/?>/gi,"\n").replace(/<\/p>/gi,"\n").replace(/<[^>]+>/g,"")).trim();
 }
-function extractMessages(html, maxScan){
+function extractPostIds(html, maxScan){
   const out=[];
-  const re = /<div class="tgme_widget_message[^"]*"[^>]*data-post="([^"]+)"[\s\S]*?<div class="tgme_widget_message_text[^"]*">([\s\S]*?)<\/div>/gi;
-  let m;
-  while ((m = re.exec(html)) !== null){
-    out.push({ post:m[1], text: stripTags(m[2]) });
+  const re = /data-post="([^"]+\/\d+)"/gi;
+  let mm;
+  while ((mm = re.exec(html)) !== null){
+    out.push(mm[1]);
     if (out.length >= maxScan) break;
   }
-  return out;
+  return Array.from(new Set(out));
 }
 function parseBuy(text){
   const lines=text.split("\n").map(l=>l.trim()).filter(Boolean);
@@ -58,14 +58,22 @@ exports.handler = async function(event){
         body: JSON.stringify({ ok:false, buys:[], error:`Fetch failed: ${res.status}` }) };
     }
     const html = await res.text();
-    const msgs = extractMessages(html, 100);
+    const posts = extractPostIds(html, 120);
     const buys=[];
-    for (const m of msgs){
-      if (/buy!/i.test(m.text)){
-        const p=parseBuy(m.text);
-        buys.push({ ...p, telegram_url:`https://t.me/${m.post}` });
-        if (buys.length>=max) break;
-      }
+    for (const post of posts){
+      const parts = post.split('/');
+      const msgid = parts[1];
+      const urlE = `https://t.me/${encodeURIComponent(channel)}/${encodeURIComponent(msgid)}?embed=1`;
+      const rE = await fetch(urlE, { headers: { "user-agent":"Mozilla/5.0 (compatible; SpyTONLanding/5.0)" }});
+      if (!rE.ok) continue;
+      const htmlE = await rE.text();
+      const mText = htmlE.match(/<div class="tgme_widget_message_text[^"]*">([\s\S]*?)<\/div>/i);
+      if (!mText) continue;
+      const text = stripTags(mText[1]);
+      if (!/buy!/i.test(text)) continue;
+      const p=parseBuy(text);
+      buys.push({ ...p, telegram_url:`https://t.me/${post}` });
+      if (buys.length>=max) break;
     }
     return { statusCode:200, headers:{ "content-type":"application/json", "cache-control":"no-store" },
       body: JSON.stringify({ ok:true, channel, buys }) };

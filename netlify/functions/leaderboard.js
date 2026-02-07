@@ -15,8 +15,9 @@ function parseTrending(text, maxRows){
   const lines=text.split("\n").map(l=>l.trim()).filter(Boolean);
   const rows=[];
   for (let line of lines){
+    line = line.replace(/^[^0-9]+/, '').trim();
     line = normalizeLeadingDigits(line);
-    const m=line.match(/^(\d{1,2})\s*[-–]\s*\$?([A-Za-z0-9_]+)\s*\|\s*([+-]\d+%?)\s*$/);
+    const m=line.match(/^(\d{1,2})\s*[-–—]\s*\$?([A-Za-z0-9_]+)\s*\|\s*([+\-]?\d+(?:\.\d+)?%?)\s*$/);
     if (m){
       rows.push({rank:parseInt(m[1],10), name:"$"+String(m[2]).toUpperCase(), change:m[3]});
     }
@@ -27,27 +28,28 @@ function extractFromEmbed(html){
   const m=html.match(/<div class="tgme_widget_message_text[^"]*">([\s\S]*?)<\/div>/i);
   return m ? stripTags(m[1]) : "";
 }
-function extractFromS(html, channel, msgid){
-  const re = new RegExp(`data-post="${channel}\\/${msgid}"[\\s\\S]*?<div class="tgme_widget_message_text[^"]*">([\\s\\S]*?)<\\/div>`, "i");
-  const m = html.match(re);
-  if (m) return stripTags(m[1]);
-  const m2=html.match(/<div class="tgme_widget_message_text[^"]*">([\\s\\S]*?)<\\/div>/i);
+function extractFromS(html, msgid){
+  const re = new RegExp(`data-post="[^"]+\\/${msgid}"[\\s\\S]*?<div class="tgme_widget_message_text[^"]*">([\\s\\S]*?)<\\/div>`, "i");
+  const mm = html.match(re);
+  if (mm) return stripTags(mm[1]);
+  const m2 = html.match(/<div class="tgme_widget_message_text[^"]*">([\s\S]*?)<\/div>/i);
   return m2 ? stripTags(m2[1]) : "";
 }
 async function fetchText(channel, msgid){
-  const url1 = `https://t.me/s/${encodeURIComponent(channel)}/${encodeURIComponent(msgid)}`;
-  const res1 = await fetch(url1, { headers: { "user-agent":"Mozilla/5.0 (compatible; SpyTONLanding/5.0)" }});
-  if (res1.ok){
-    const html = await res1.text();
-    const t = extractFromS(html, channel, msgid);
-    if (t) return t;
+  const urlEmbed = `https://t.me/${encodeURIComponent(channel)}/${encodeURIComponent(msgid)}?embed=1`;
+  const resE = await fetch(urlEmbed, { headers: { "user-agent":"Mozilla/5.0 (compatible; SpyTONLanding/5.0)" }});
+  if (resE.ok){
+    const htmlE = await resE.text();
+    const tE = extractFromEmbed(htmlE);
+    if (tE) return tE;
   }
-  const url2 = `https://t.me/${encodeURIComponent(channel)}/${encodeURIComponent(msgid)}?embed=1&mode=tme`;
-  const res2 = await fetch(url2, { headers: { "user-agent":"Mozilla/5.0 (compatible; SpyTONLanding/5.0)" }});
-  if (res2.ok){
-    const html2 = await res2.text();
-    const t2 = extractFromEmbed(html2);
-    if (t2) return t2;
+
+  const urlS = `https://t.me/s/${encodeURIComponent(channel)}/${encodeURIComponent(msgid)}`;
+  const resS = await fetch(urlS, { headers: { "user-agent":"Mozilla/5.0 (compatible; SpyTONLanding/5.0)" }});
+  if (resS.ok){
+    const htmlS = await resS.text();
+    const tS = extractFromS(htmlS, msgid);
+    if (tS) return tS;
   }
   return "";
 }
